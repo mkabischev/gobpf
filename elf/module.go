@@ -19,12 +19,12 @@
 package elf
 
 import (
-	"crypto/rand"
 	"debug/elf"
 	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"regexp"
 	"strconv"
