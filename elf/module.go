@@ -19,6 +19,7 @@
 package elf
 
 import (
+	"crypto/rand"
 	"debug/elf"
 	"errors"
 	"fmt"
@@ -356,7 +357,7 @@ func (b *Module) EnableKprobe(secName string, maxactive int) error {
 		probeType = "p"
 		funcName = strings.TrimPrefix(secName, "kprobe/")
 	}
-	eventName := probeType + funcName
+	eventName := probeType + funcName + strconv.Itoa(rand.Int())
 
 	kprobeId, err := writeKprobeEvent(probeType, eventName, funcName, maxactiveStr)
 	// fallback without maxactive
